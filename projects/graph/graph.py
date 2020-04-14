@@ -98,21 +98,21 @@ class Graph:
         This should be done using recursion.
         """
 
-        # add edges
+        # edges
         edges = self.get_neighbors(starting_vertex)
 
         if visited is None:
             # instantiate empty set for visited 
             visited = set()
 
-        # mark current vertex as visited:
+        # mark current vertex as visited
         visited.add(starting_vertex)
 
         # start printing on starting_vertex as beginning
         print(starting_vertex)
 
-        # our base case is if we have no edges,
-        # so it will return the last vertex which is the destination.
+        # our base case is if we have no edges left to visit,
+        # so it will recurse here.
         for edge in edges:
             if edge not in visited:
                 self.dft_recursive(edge, visited)
@@ -193,9 +193,10 @@ class Graph:
             visited = set()
         
         if path is None:
+             # instantiate empty list for path
             path = []
 
-        # mark current vertex as visited:
+        # mark current vertex as visited
         visited.add(starting_vertex)
 
         # defining path
@@ -205,14 +206,15 @@ class Graph:
         if starting_vertex == destination_vertex:
             return path
 
-        # our base case is if we have no edges,
-        # so it will return the last vertex which is the destination.
+        # our base case is if we found the destination vertex,
+        # so it will recurse and will define the new_path
         for edge in edges:
             if edge not in visited:
-                self.dfs_recursive(edge, visited)
                 new_path = self.dfs_recursive(edge, destination_vertex, visited, path)
                 if new_path:
                     return new_path
+
+        # return None if we never find a possible path
         return None
 
 if __name__ == '__main__':
