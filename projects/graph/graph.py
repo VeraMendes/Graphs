@@ -75,7 +75,7 @@ class Graph:
         visited = set()
         # while stack is not empty
         while ss.size() > 0:
-            # pop the first vertex
+            # pop the first vertex (needs to be in the correct place)
             path = ss.pop()
             # if not visited
             if path[-1] not in visited:
@@ -146,6 +146,8 @@ class Graph:
                     new_path = list(path)
                     new_path.append(next_vert)
                     qq.enqueue(new_path)
+        
+        # implicitely Python returns None if path not found
 
     def dfs(self, starting_vertex, destination_vertex):
         """
@@ -193,13 +195,13 @@ class Graph:
             visited = set()
         
         if path is None:
-             # instantiate empty list for path
+            # instantiate empty list for path
             path = []
 
         # mark current vertex as visited
         visited.add(starting_vertex)
 
-        # defining path
+        # define path
         path = path + [starting_vertex]
 
         # when destination found, return path
@@ -214,7 +216,7 @@ class Graph:
                 if new_path:
                     return new_path
 
-        # return None if we never find a possible path
+        # return None if path does not exist (already returns implicity)
         return None
 
 if __name__ == '__main__':
