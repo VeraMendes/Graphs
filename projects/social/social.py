@@ -92,6 +92,18 @@ class SocialGraph:
         `add_friendship(2, 1)`. You should avoid calling one
         after the other since it will do nothing but print a warning.
         You can avoid this by only creating friendships where user1 < user2.'''
+    
+    # def populate_graph(self, num_users, avg_friendships):
+        # Reset graph
+        # self.last_id = 0
+        # self.users = {}
+        # self.friendships = {}
+
+        # pick a random user
+        # pick another random user
+        # try to create the friendship
+        # if it works, increment the counter
+        # if not, try again 
 
     def get_all_social_paths(self, user_id):
         """
@@ -147,3 +159,17 @@ if __name__ == '__main__':
     print(sg.friendships)
     connections = sg.get_all_social_paths(1)
     print(connections)
+    
+
+    # sg.populate_graph(1000, 5)
+    # connections = sg.get_all_social_paths(1)
+    # print(len(connections) / 1000)
+    # total = 0
+    # for path in connections.values():
+    #     total += len(path)
+    # print(f'Avg length = {total / len(connections)}')
+
+    # sg.populate_graph(1000, 5)
+    # connections = sg.get_all_social_paths(1)
+    # key = 1
+    # print(sum([len(connections[key]) for key in connections])/len(connections))
