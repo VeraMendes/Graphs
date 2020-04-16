@@ -30,11 +30,14 @@ class SocialGraph:
         """
         if user_id == friend_id:
             print("WARNING: You cannot be friends with yourself")
+            # return False
         elif friend_id in self.friendships[user_id] or user_id in self.friendships[friend_id]:
             print("WARNING: Friendship already exists")
+            # return False
         else:
             self.friendships[user_id].add(friend_id)
             self.friendships[friend_id].add(user_id)
+            # return True
 
     def add_user(self, name):
         """
@@ -99,6 +102,30 @@ class SocialGraph:
         # self.users = {}
         # self.friendships = {}
 
+        # for i in range(0, num_users):
+        #     self.add_user(f"User {i+1")
+
+        # new friendship method:
+        # randomly generate friendships, keeping new and rejecting dupes, until
+        # we get to the number we need (num_users * avg friendships // 2)
+        # keep track of good friendships and collisions
+
+        # target_friendships = num_users * avg_friendships
+        # total_friendships = 0
+        # collisions = 0
+
+        # while total_friendships < target_friendships:
+        #     user_id = random.randint(1, self.last_id)
+        #     friend_id = random.randint(1, self.last_id)
+
+        #     if self.add_friendship(user_id, friend_id):
+        #         total_friendships += 2
+        #     else:
+        #         collisions += 1
+
+        # print(f"Total collisions: {collisions}")
+
+        # other explanation:
         # pick a random user
         # pick another random user
         # try to create the friendship
@@ -114,7 +141,7 @@ class SocialGraph:
 
         The key is the friend's ID and the value is the path.
         """
-        visited = {}  # Note that this is a dictionary, not a set
+        # visited = {}  # Note that this is a dictionary, not a set
         # !!!! IMPLEMENT ME
 
         # implement BFS 
@@ -156,8 +183,10 @@ class SocialGraph:
 if __name__ == '__main__':
     sg = SocialGraph()
     sg.populate_graph(10, 2)
+    print("Friendships:")
     print(sg.friendships)
     connections = sg.get_all_social_paths(1)
+    print("Connections:")
     print(connections)
     
 
