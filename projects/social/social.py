@@ -116,10 +116,12 @@ class SocialGraph:
         while q.size() > 0:
             # dequeue the first vertex
             path = q.dequeue()
+
+            # last friend on path is the new key
             new_key = path[-1]
             # if not in dict visited
             if not visited.get(new_key, None):
-                # Do the thing!!!
+                # DO THE THING!!!
                 # add key with respective shortest path in dict
                 visited[new_key] = path
                 
